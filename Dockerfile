@@ -1,8 +1,4 @@
-FROM opensuse/leap
-RUN zypper in -y apache2 && zypper clean -a
-RUN a2enmod rewrite
-RUN ln -sf /proc/self/fd/1 /var/log/apache2/access_log && \
-    ln -sf /proc/self/fd/1 /var/log/apache2/error_log
-COPY index.html /srv/www/htdocs/
-CMD [ "/usr/sbin/start_apache2", "-DFOREGROUND" ]
-EXPOSE 80 433
+FROM wity/apache
+RUN zypper in -y php7 php7-gd php7-gettext php7-mbstring php7-mysql php7-pear apache2-mod_php7 php7-zip && zypper clean -a
+RUN a2enmod php7
+COPY index.php /srv/www/htdocs/
