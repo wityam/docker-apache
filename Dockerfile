@@ -6,3 +6,4 @@ RUN ln -sf /proc/self/fd/1 /var/log/apache2/access_log && \
 COPY index.html /srv/www/htdocs/
 CMD [ "/usr/sbin/start_apache2", "-DFOREGROUND" ]
 EXPOSE 80 433
+WORKDIR /srv/www/htdocs
