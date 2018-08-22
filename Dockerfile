@@ -1,5 +1,5 @@
 FROM opensuse/leap
-RUN zypper in -y apache2 && zypper clean -a
+RUN zypper in -y apache2 tar && zypper clean -a
 RUN a2enmod rewrite
 RUN ln -sf /proc/self/fd/1 /var/log/apache2/access_log && \
     ln -sf /proc/self/fd/1 /var/log/apache2/error_log
